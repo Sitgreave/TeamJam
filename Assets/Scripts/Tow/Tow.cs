@@ -9,7 +9,7 @@ public class Tow : MonoBehaviour
     [SerializeField] private MoveEvents _moveEvents;
 
     [SerializeField] private LineRenderer ropeRenderer;
-    [SerializeField]  private float ropeMaxCastDistance = 5f;
+    [SerializeField] private float ropeMaxCastDistance = 5f;
     public float RopeMaxCastDistance => ropeMaxCastDistance;
 
     private List<Vector2> ropePositions = new List<Vector2>();
@@ -20,21 +20,21 @@ public class Tow : MonoBehaviour
     private void Start()
     {
         ropeJoint.enabled = false;
-       // ResetRope();
+        // ResetRope();
     }
 
-   
-  
+
+
 
     public void Towing(Vector2 towPosition)
     {
         ropeHingeAnchorRb.position = towPosition;
         ropeJoint.distance = Vector2.Distance(transform.position, towPosition);
         ropeJoint.enabled = true;
-        ropeRenderer.SetPosition(0, transform.position);
-        ropeRenderer.SetPosition(1, towPosition);
+        ropeRenderer.SetPosition(0, towPosition);
+        ropeRenderer.SetPosition(1, transform.position);
         _moveEvents._onRopeHolded.Invoke();
-    } 
+    }
     public void ResetRope()
     {
         ropeJoint.enabled = false;
@@ -45,12 +45,12 @@ public class Tow : MonoBehaviour
         ropeHingeAnchorSprite.enabled = false;
         ropeJoint.enabled = false;
         _moveEvents._onRopeDroped.Invoke();
-        
+
     }
 
     private void UpdateRopePositions()
     {
-       
+
     }
 
 

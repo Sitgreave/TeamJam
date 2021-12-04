@@ -16,21 +16,21 @@ public class Weapon : MonoBehaviour
 
 	void Update()
 	{
-		
+
 		if (Input.GetMouseButtonDown(0) && reloaded && !towExist)
 		{
 			Shot();
 			reloaded = false;
 			Invoke("Reload", 1.5f);
 		}
-		
 
-		if (Input.GetMouseButton(1))
+
+		if (Input.GetMouseButton(1) && towExist)
 		{
 			tow.ResetRope();
 			towExist = false;
 			if (newBullet != null) Destroy(newBullet.gameObject);
-			
+
 		}
 		if (newBullet != null) TryTow();
 	}
@@ -41,7 +41,6 @@ public class Weapon : MonoBehaviour
 		newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.identity, gunTrashBucket);
 		newBullet.Rigidbody.AddForce(gunPoint.right * speed, ForceMode2D.Impulse);
 		newBullet.transform.right = gunPoint.right;
-		towExist = true;
 
 	}
 
@@ -49,15 +48,16 @@ public class Weapon : MonoBehaviour
 	{
 		if (newBullet.CanTowed)
 		{
+
 			tow.Towing(newBullet.TowPosition);
 			towExist = true;
-	
+
 		}
 	}
 
 	private void Reload()
-    {
+	{
 		reloaded = true;
-    }
+	}
 }
 

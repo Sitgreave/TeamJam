@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 42394534}
   - component: {fileID: 42394536}
   - component: {fileID: 42394530}
-  - component: {fileID: 42394533}
   - component: {fileID: 42394537}
   - component: {fileID: 42394538}
   m_Layer: 3
@@ -182,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 42394529}
-  _jumpForce: 500
+  _jumpForce: 250
   _runSpeed: 10
-  _groundChecker: {fileID: 42394533}
+  _groundChecker: {fileID: 674741484}
   _inputHandler: {fileID: 833943231}
 --- !u!4 &42394531
 Transform:
@@ -220,23 +219,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2926839, y: -0.00000017881393}
   m_Size: {x: 0.98780644, y: 1.9268326}
   m_Direction: 0
---- !u!114 &42394533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42394528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb146c0f330c3ca4f93d7edcfe02e7dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _footsPosition: {fileID: 674741483}
-  _radius: 0.1
 --- !u!114 &42394534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,15 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ropeHingeAnchorRb: {fileID: 202004673}
   ropeHingeAnchorSprite: {fileID: 202004675}
-  _crosshair: {fileID: 0}
-  playerPosition: {fileID: 42394531}
   _moveEvents: {fileID: 519420030}
   ropeRenderer: {fileID: 42394536}
-  ropeLayerMask:
-    serializedVersion: 2
-    m_Bits: 65
   ropeMaxCastDistance: 5
-  ropeHingeAnchor: {fileID: 202004672}
   ropeJoint: {fileID: 42394535}
 --- !u!232 &42394535
 DistanceJoint2D:
@@ -471,7 +447,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7997150465063597444, guid: d87b8d0583330bc49bd6536b2475de4c, type: 3}
   gunPoint: {fileID: 364315942}
   gunTrashBucket: {fileID: 1188917792}
-  tow: {fileID: 0}
+  tow: {fileID: 42394534}
 --- !u!1 &202004672
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &202004673
 Rigidbody2D:
   serializedVersion: 4
@@ -532,7 +508,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202004672}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -989,6 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 674741483}
+  - component: {fileID: 674741484}
   m_Layer: 3
   m_Name: Foot
   m_TagString: Untagged
@@ -1004,12 +981,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674741482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.032000065, y: -0.98, z: 0}
+  m_LocalPosition: {x: -0.28, y: -0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 42394531}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674741484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674741482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb146c0f330c3ca4f93d7edcfe02e7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _footsPosition: {fileID: 674741483}
+  _radius: 0.01
 --- !u!1 &833943230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903051204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.21799994, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1675979103}
