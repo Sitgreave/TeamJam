@@ -4,6 +4,7 @@ public class Crosshair : MonoBehaviour
 {
     [SerializeField] private Transform _playerPosition;
     [SerializeField] private Transform _crosshairPosition;
+    public Vector2 Position => _crosshairPosition.position;
     public SpriteRenderer CrosshairSprite;
     private Vector3 _aimDirection;
     public Vector3 AimDirection => _aimDirection;

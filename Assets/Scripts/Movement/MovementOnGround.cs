@@ -14,10 +14,15 @@ public class MovementOnGround : MonoBehaviour
             x: _inputHandler.Horizontal * _runSpeed,
             y: _rb.velocity.y
             );
-
-        if (Input.GetButtonDown("Jump") && _groundChecker.IsGround)
+        if (Input.GetButton("Jump") && _groundChecker.IsGround)
         {
             _rb.AddForce(new Vector2(0, _jumpForce));
+            Invoke(nameof(FastGrounded), 1f);
         }
+    }
+
+    private void FastGrounded()
+    {
+        _rb.AddForce(new Vector2(0, -_jumpForce / 1.5f));
     }
 }
